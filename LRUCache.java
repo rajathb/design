@@ -1,6 +1,6 @@
-/*
- * Copyright 2019 Mobile Iron, Inc.
- * All rights reserved.
+/**
+ * LRU Cache implementation
+ * 
  */
 package problems;
 
@@ -15,6 +15,7 @@ public class LRUCache<K, V> {
 
     int capacity;
     Map<K,LRUCacheElement<K, V>> map; 
+    // the doubly linked list controlled by head and tail references.
     LRUCacheElement <K ,V> head, tail;
     
     public LRUCache(int lSize) {
@@ -107,6 +108,10 @@ public class LRUCache<K, V> {
             current = current.next;
         }
     }
+    /**
+     * Each element in the LRU cache. This is a wrapper on key+value combination. 
+     * This becomes a node in the doubly linked list of the LRUCache
+     */
     class LRUCacheElement <T , U> {
         T key;
         U value;
